@@ -1,0 +1,1 @@
+<a {{ $attributes(['class' => 'btn-uppercase']) }} > {{$slot}}</a>
