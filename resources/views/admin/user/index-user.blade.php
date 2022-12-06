@@ -2,16 +2,16 @@
 
 
     <x-breadcrumb.main>
-        <x-breadcrumb.left-item class="active" aria-current="page">Breadcrumb link 2 </x-breadcrumb.left-item>
-        <x-slot name="title"> Title </x-slot>
+        <x-breadcrumb.left-item class="active" aria-current="page">Users </x-breadcrumb.left-item>
+        <x-slot name="title"> User List </x-slot>
         <x-slot name="link">
-            <x-breadcrumb.right-item href="{{ route('admin.dealer.index') }}" class="btn-primary"> <i
-                    data-feather="printer" class="wd-10 mg-r-5"></i>Link 1</x-breadcrumb.right-item>
+            <x-breadcrumb.right-item href="{{ route('admin.user.create') }}" class="btn-primary"> <i
+                    data-feather="plus" class="wd-10 mg-r-5"></i>New User</x-breadcrumb.right-item>
         </x-slot>
     </x-breadcrumb.main>
 
     <div class="row row-xs">
-
+        @livewire('admin.user.list-user-component')
     </div>
 
 </x-admin-layout>

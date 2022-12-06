@@ -19,6 +19,8 @@ class User extends Authenticatable
     use Notifiable;
     use TwoFactorAuthenticatable;
 
+    const PAGINATION_COUNT = 5;
+
     /**
      * The attributes that are mass assignable.
      *
@@ -28,6 +30,9 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'status',
+        'role',
+        'profile_photo_path',
     ];
 
     /**
@@ -60,4 +65,11 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public static function search($search)
+    {
+        return empty($search) ? static::query()
+            :  static::query()->where('name', 'like', '%' . $search . '%')
+            ->orWhere('email', 'like', '%' . $search . '%');
+    }
 }

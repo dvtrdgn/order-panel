@@ -20,7 +20,10 @@
 </head>
 
 <body class="page-profile ">
-    @include('admin.partial._header')
+    @auth
+        @include('admin.partial._header')
+    @endauth
+
     <div class="content content-fixed">
         <div class="container pd-x-0 pd-lg-x-10 pd-xl-x-0">
             {{ $slot }}
@@ -32,13 +35,13 @@
     <script src="{{ asset('admin') }}/lib/jquery/jquery.min.js"></script>
     <script src="{{ asset('admin') }}/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="{{ asset('admin') }}/lib/feather-icons/feather.min.js"></script>
-    <script src="{{ asset('admin') }}/lib/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-    <script src="{{ asset('admin') }}/lib/jquery.flot/jquery.flot.js"></script>
+    {{-- <script src="{{ asset('admin') }}/lib/perfect-scrollbar/perfect-scrollbar.min.js"></script> --}}
+    {{-- <script src="{{ asset('admin') }}/lib/jquery.flot/jquery.flot.js"></script>
     <script src="{{ asset('admin') }}/lib/jquery.flot/jquery.flot.stack.js"></script>
-    <script src="{{ asset('admin') }}/lib/jquery.flot/jquery.flot.resize.js"></script>
+    <script src="{{ asset('admin') }}/lib/jquery.flot/jquery.flot.resize.js"></script> --}}
 
-    <script src="{{ asset('admin') }}/lib/jqvmap/jquery.vmap.min.js"></script>
-    <script src="{{ asset('admin') }}/lib/jqvmap/maps/jquery.vmap.usa.js"></script>
+    {{-- <script src="{{ asset('admin') }}/lib/jqvmap/jquery.vmap.min.js"></script> --}}
+    {{-- <script src="{{ asset('admin') }}/lib/jqvmap/maps/jquery.vmap.usa.js"></script> --}}
 
     <script src="{{ asset('admin') }}/assets/js/dashforge.js"></script>
     <script src="{{ asset('admin') }}/assets/js/dashforge.sampledata.js"></script>

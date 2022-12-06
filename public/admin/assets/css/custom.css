@@ -179,9 +179,13 @@ td img {
 
 .fix-bottom {
     background-color: #F3F3F3;
-    padding-top: 10px;
+    padding-top: 8px;
     padding-bottom: 8px;
     position: fixed;
     bottom: 0;
     width: 100%;
+}
+
+.modal-open {
+    overflow: hidden !important;
 }

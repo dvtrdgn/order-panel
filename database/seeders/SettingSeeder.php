@@ -22,7 +22,7 @@ class SettingSeeder extends Seeder
                     'title' => 'Order ',
                     'logo_white' => '',
                     'logo_dark' => '',
-                    'favicon' => '1660218636_favicon.png',
+                    'favicon' => '',
                     'phone1' => '',
                     'email1' => 'info@sitename.nl',
                     'email2' => 'info@sitename.nl',

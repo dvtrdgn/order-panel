@@ -24,7 +24,8 @@
           py-1.5
           text-base
           font-normal
-          text-gray-700
+          text-red-700
+          border-red-600
           bg-white bg-clip-padding          
           border-gray-400
           rounded
@@ -44,5 +45,5 @@
 </div>
 
 @if ($error)
-    <div class="mt-1 text-red-500 text-sm">{{ $error }}</div>
+   <x-form.error>{{$error}}</x-form.error>
 @endif
