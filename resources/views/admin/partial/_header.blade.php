@@ -12,22 +12,27 @@
             <li class="nav-label pd-l-20 pd-lg-l-25 d-lg-none">Main Navigation</li>
             <x-menu.menu-item :active="request()->routeIs('admin.dashboard')">
                 <x-menu.menu-link href="{{ route('admin.dashboard') }}">
-                    Home
+                    <x-element.icon.home></x-element.icon.home> Home
+                </x-menu.menu-link>
+            </x-menu.menu-item>
+            <x-menu.menu-item :active="request()->routeIs('admin.category.index')">
+                <x-menu.menu-link href="{{ route('admin.category.index') }}">
+                    <x-element.icon.list></x-element.icon.list> Category
                 </x-menu.menu-link>
             </x-menu.menu-item>
             <x-menu.menu-item :active="request()->routeIs('admin.user.index')">
                 <x-menu.menu-link href="{{ route('admin.user.index') }}">
-                    User
+                    <x-element.icon.user></x-element.icon.user> User
                 </x-menu.menu-link>
             </x-menu.menu-item>
             <x-menu.menu-item :active="request()->routeIs('admin.dealer.index')">
                 <x-menu.menu-link href="{{ route('admin.dealer.index') }}">
-                    Dealer
+                    <x-element.icon.users></x-element.icon.users> Dealer
                 </x-menu.menu-link>
             </x-menu.menu-item>
             <x-menu.menu-item :active="request()->routeIs('admin.setting.edit')">
                 <x-menu.menu-link href="{{ route('admin.setting.edit') }}">
-                    Setting
+                    <x-element.icon.setting></x-element.icon.setting> Setting
                 </x-menu.menu-link>
             </x-menu.menu-item>
         </ul>
@@ -35,12 +40,10 @@
     <div class="navbar-right">
         <div class="dropdown dropdown-profile">
             <a href="" class="dropdown-link" data-toggle="dropdown" data-display="static">
-                <div class="avatar avatar-sm"><img src="https://via.placeholder.com/500" class="rounded-circle"
-                        alt=""></div>
+                <div class="avatar avatar-sm"><img src="https://via.placeholder.com/500" class="rounded-circle" alt=""></div>
             </a><!-- dropdown-link -->
             <div class="dropdown-menu dropdown-menu-right tx-13">
-                <div class="avatar avatar-lg mg-b-15"><img src="https://via.placeholder.com/500" class="rounded-circle"
-                        alt=""></div>
+                <div class="avatar avatar-lg mg-b-15"><img src="https://via.placeholder.com/500" class="rounded-circle" alt=""></div>
                 <h6 class="tx-semibold mg-b-5">Katherine Pechon</h6>
                 <p class="mg-b-25 tx-12 tx-color-03">Administrator</p>
 
@@ -53,10 +56,8 @@
                 <a href="" class="dropdown-item"><i data-feather="life-buoy"></i> Forum</a>
                 <a href="" class="dropdown-item"><i data-feather="settings"></i>Account Settings</a>
                 <a href="" class="dropdown-item"><i data-feather="settings"></i>Privacy Settings</a>
-                <a href="javascript:void" onclick="$('#logout-form').submit();" class="dropdown-item"><i
-                        data-feather="log-out"></i>Sign Out</a>
-                <form id="logout-form" method="POST" action="{{ route('logout') }}" method="POST"
-                    style="display: none;">
+                <a href="javascript:void" onclick="$('#logout-form').submit();" class="dropdown-item"><i data-feather="log-out"></i>Sign Out</a>
+                <form id="logout-form" method="POST" action="{{ route('logout') }}" method="POST" style="display: none;">
                     @csrf
                 </form>
             </div><!-- dropdown-menu -->

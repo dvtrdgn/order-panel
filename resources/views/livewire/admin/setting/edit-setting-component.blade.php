@@ -1,4 +1,4 @@
-<div class="card shadow-md hover:shadow-xl ">
+<div class="card shadow-md hover:shadow-xl">
     <fieldset class="form-fieldset mg-10">
         <legend>Site Information</legend>
         <div class="row row-sm ">
@@ -24,8 +24,6 @@
     </fieldset>
     <fieldset class="form-fieldset mg-10">
         <legend>Contact</legend>
-
-
         <div class="row row-sm">
             <div class="col-md-6">
                 <x-form.input wire:model="setting.email1" :error="$errors->first('setting.email1')">Office Email</x-form.input>
@@ -39,8 +37,6 @@
             <div class="col-md-6">
                 <x-form.input wire:model="setting.phone2" :error="$errors->first('setting.phone2')">Factory Phone</x-form.input>
             </div>
-
-
             <div class="col-md-6">
                 <x-form.label>Office Address</x-form.label>
                 <x-form.textarea wire:model="setting.address1" :error="$errors->first('setting.address1')">{{ $setting->address1 }}
@@ -52,10 +48,8 @@
                 </x-form.textarea>
             </div>
         </div>
-    </fieldset>
-    <div class="flex  justify-end mb-20 mr-10">
-        <x-form.button wire:click="save" :error="$errors">
+        <x-form.button class="float-right my-3" wire:click="save" :error="$errors">
             Update Setting
         </x-form.button>
-    </div>
+    </fieldset>
 </div>

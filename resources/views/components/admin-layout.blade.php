@@ -15,7 +15,7 @@
     <!-- DashForge CSS -->
     {{-- <link rel="stylesheet" href="{{ asset('admin') }}/assets/css/dashforge.css"> --}}
     <link rel="stylesheet" href="{{ asset('admin') }}/assets/css/dashforge.dashboard.css">
-
+<script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     @livewireStyles
 </head>
 

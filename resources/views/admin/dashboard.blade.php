@@ -5,8 +5,7 @@
             {{Auth::user()->name}}
         @endauth </x-slot>
         <x-slot name="link">
-            <x-breadcrumb.right-item href="{{ route('admin.dealer.index') }}" class="btn-primary"> <i
-                    data-feather="printer" class="wd-10 mg-r-5"></i>Link 1</x-breadcrumb.right-item>
+            <x-breadcrumb.right-item href="{{ route('admin.setting.edit') }}"><x-element.icon.setting></x-element.icon.setting> Setting</x-breadcrumb.right-item>
         </x-slot>
     </x-breadcrumb.main>
     <h1>content area</h1>

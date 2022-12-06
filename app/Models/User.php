@@ -33,6 +33,7 @@ class User extends Authenticatable
         'status',
         'role',
         'profile_photo_path',
+        'dealer_id',
     ];
 
     /**
@@ -71,5 +72,10 @@ class User extends Authenticatable
         return empty($search) ? static::query()
             :  static::query()->where('name', 'like', '%' . $search . '%')
             ->orWhere('email', 'like', '%' . $search . '%');
+    }
+
+    public function dealer()
+    {
+        return $this->belongsTo(Dealer::class);
     }
 }

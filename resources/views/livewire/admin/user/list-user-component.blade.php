@@ -1,24 +1,10 @@
 <div class="col-md-12">
-    {{-- <fieldset class="form-fieldset">
-        <legend>User List</legend>
-        <div class="form-group">
-          <label class="d-block">Firstname</label>
-          <input type="text" class="form-control" placeholder="Enter your firstname">
-        </div>
-        <div class="form-group">
-          <label class="d-block">Lastname</label>
-          <input type="text" class="form-control" placeholder="Enter your lastname">
-        </div>
-      </fieldset> --}}
-
     <div class="row">
         <div class="col-xl-12">
             <div data-label="Users " class="df-example">
                 <div class="card-header">
                     <div class="input-group">
                         <div class="input-group ">
-                            {{-- <input wire:change="$emitSelf('updatingSearch')" type="text" class="form-control"
-                                placeholder="Search for..." wire:model="search"> --}}
                             <x-form.input wire:change="$emitSelf('updatingSearch')" type="text" class="form-control" placeholder="Search for..." wire:model="search"></x-form.input>
                             </span>
                         </div>
@@ -33,10 +19,10 @@
                                     <th>Image</th>
                                     <th>Name</th>
                                     <th>Email</th>
+                                    <th>Dealer</th>
                                     <th>Role</th>
                                     <th>Status</th>
                                     <th>Action</th>
-
                                 </tr>
                             </thead>
                             <tbody>
@@ -49,12 +35,20 @@
                                         <div class="avatar avatar-lg"><img src="{{ asset('assets/images/static') }}/1660910188_user.png" class="rounded-circle avatar-image" alt=""></div>
                                         @endif
                                     </td>
-
                                     <td>
                                         {{ $user->name }}
                                     </td>
                                     <td>
                                         {{ $user->email }}
+                                    </td>
+                                    <td>
+                                        @if ($user->dealer()->exists() && $user->dealer['id'])
+                                        <a href="{{ route('admin.dealer.edit', ['id' => $user->dealer['id']]) }}">
+                                            <span class="badge badge-success">{{ $user->dealer['name'] }}</span>
+                                        </a>
+                                        @else
+                                        <span class="text-danger"><b>No dealer set</b></span>
+                                        @endif
                                     </td>
                                     <td>
                                         @if ($user->role == \App\Enums\Role::Admin)
@@ -65,11 +59,10 @@
                                     </td>
                                     <td>
                                         @if ($user->status == \App\Enums\Status::Active->value)
-                                        {{ \App\Enums\Status::Active->name }}
+                                        <span class="badge badge-primary"> {{ \App\Enums\Status::Active->name }}</span>
                                         @elseif ($user->status == \App\Enums\Status::Passive->value)
-                                        {{ \App\Enums\Status::Passive->name }}
+                                        <span class="badge badge-warning"> {{ \App\Enums\Status::Passive->name }} </span>
                                         @endif
-
                                     </td>
                                     <td>
                                         <x-element.link.primary href="{{ route('admin.user.edit', ['id' => $user->id]) }}">
@@ -87,9 +80,7 @@
                         {{ $users->links() }}
                     </div>
                 </div>
-
             </div>
-
         </div>
     </div>
     @if ($canDelete ==1)
@@ -108,8 +99,7 @@
                 <div class="modal-footer">
                     <x-element.link.light type="button" data-dismiss="modal">Close</x-element.link.light>
                     <x-element.link.danger type="button" wire:click.prevent="delete()" data-dismiss="modal">Yes, Delete</x-element.link.danger>
-
-               </div>
+                </div>
             </div>
         </div>
     </div>
@@ -129,7 +119,6 @@
                 </div>
                 <div class="modal-footer">
                     <x-element.link.light type="button" data-dismiss="modal">Close</x-element.link.light>
-
                 </div>
             </div>
         </div>

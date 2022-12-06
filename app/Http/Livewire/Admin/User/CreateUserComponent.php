@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Admin\User;
 
 use App\Enums\Role;
 use App\Enums\Status;
+use App\Models\Dealer;
 use App\Models\User;
 use App\Repository\User\UserRepo;
 use Carbon\Carbon;
@@ -22,6 +23,7 @@ class CreateUserComponent extends Component
     public $status;
     public $role;
     public $image;
+    public $dealer_id;
 
     // set validation rules
     protected $rules = [
@@ -29,6 +31,12 @@ class CreateUserComponent extends Component
         'email' => 'required|email|unique:users',
         'password' => 'required|min:6|confirmed',
         'image' => 'max:2000',
+        'dealer_id' => 'required'
+    ];
+      // customize validation message
+      protected $messages = [
+        'dealer_id' => 'Dealer is required',
+
     ];
 
     public function updated($propertyName)
@@ -51,6 +59,7 @@ class CreateUserComponent extends Component
             'password' => $this->password,
             'status' => $this->status,
             'role' => $this->role,
+            'dealer_id' => $this->dealer_id,
             'profile_photo_path' => $this->image_url ?? null,
         ]);
 
@@ -64,6 +73,7 @@ class CreateUserComponent extends Component
         $this->email = null;
         $this->password = null;
         $this->image = null;
+        $this->dealer_id = null;
         $this->password_confirmation = null;
         $this->status = Status::Active->value;
         $this->role = Role::User->value;
@@ -79,6 +89,6 @@ class CreateUserComponent extends Component
 
     public function render()
     {
-        return view('livewire.admin.user.create-user-component');
+        return view('livewire.admin.user.create-user-component', ['dealers' => Dealer::all()]);
     }
 }

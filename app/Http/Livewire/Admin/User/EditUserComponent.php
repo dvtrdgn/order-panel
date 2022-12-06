@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Admin\User;
 
+use App\Models\Dealer;
 use App\Models\User;
 use App\Repository\User\UserRepo;
 use Carbon\Carbon;
@@ -16,14 +17,23 @@ class EditUserComponent extends Component
     public User $user;
     public $new_image;
 
+    protected function rules()
+    {
+        return [
+            'user.name' => 'required|min:3',
+            'user.email' => 'required|string|email|max:255|unique:users,email,' . $this->user_id,
+            'user.profile_photo_path' => 'max:2000',
+            'user.status' => '',
+            'user.role' => '',
+            'user.dealer_id' => 'required',
 
-    // set validation rules
-    protected $rules = [
-        'user.name' => 'required|min:3',
-        'user.email' => 'required|email|unique:users',
-        'user.profile_photo_path' => 'max:2000',
-        'user.status' => '',
-        'user.role' => '',
+        ];
+    }
+
+    // customize validation message
+    protected $messages = [
+        'user.dealer_id' => 'Dealer is required',
+
     ];
 
     public function updated($propertyName)
@@ -33,19 +43,29 @@ class EditUserComponent extends Component
 
     public function save()
     {
-        if ($this->new_image) {            
+        $this->validate();
+        if ($this->new_image) {
             $imagePath = "/user/" . $this->user->profile_photo_path;
             if (Storage::exists($imagePath)) {
                 Storage::delete($imagePath);
             }
             $imagePath = Carbon::now()->timestamp . '_user.' . $this->new_image->extension();
             $this->new_image->storeAs('user', $imagePath);
-            
+
             $this->user->profile_photo_path = $imagePath;
         }
 
         if ($this->user->isDirty()) {
             $this->user->save();
+            $this->dispatchBrowserEvent(
+                'alert',
+                ['type' => 'success',  'message' => 'User updated successfully!']
+            );
+        } else {
+            $this->dispatchBrowserEvent(
+                'alert',
+                ['type' => 'warning',  'message' => 'No new data to update!']
+            );
         }
     }
 
@@ -58,6 +78,6 @@ class EditUserComponent extends Component
 
     public function render()
     {
-        return view('livewire.admin.user.edit-user-component');
+        return view('livewire.admin.user.edit-user-component', ['dealers' => Dealer::all()]);
     }
 }
