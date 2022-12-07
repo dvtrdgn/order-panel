@@ -63,16 +63,6 @@ class CreateCategoryComponent extends Component
         }
     }
 
-    public function getParentsTree($category, $title)
-    {
-        if ($category->parent_id == 0) {
-            return $title;
-        }
-        $parent = Category::find($category->parent_id);
-        $title = $parent->title . ' > ' . $title;
-        return   $this->getParentsTree($parent, $title);
-    }
-
     public function mount()
     {
         $this->allCategories  = Category::with('children')->orderBy('parent_id', 'ASC')->get();

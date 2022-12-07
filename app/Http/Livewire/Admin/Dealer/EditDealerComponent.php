@@ -63,7 +63,6 @@ class EditDealerComponent extends Component
         }
     }
 
-
     public function mount($dealer_id)
     {
         $this->dealer_id = $dealer_id;

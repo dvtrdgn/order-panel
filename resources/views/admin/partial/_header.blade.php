@@ -1,5 +1,5 @@
 <header class="navbar navbar-header navbar-header-fixed bg-amber-50  shadow-md">
-    <a href="" id="mainMenuOpen" class="burger-menu"><i data-feather="menu"></i></a>
+    <a href="" id="mainMenuOpen" class="burger-menu"><x-element.icon.menu></x-element.icon.menu></a>
     <div class="navbar-brand">
         <a href="{{ route('admin.dashboard') }}" class="df-logo">order<span>panel</span></a>
     </div><!-- navbar-brand -->
@@ -18,6 +18,11 @@
             <x-menu.menu-item :active="request()->routeIs('admin.category.index')">
                 <x-menu.menu-link href="{{ route('admin.category.index') }}">
                     <x-element.icon.list></x-element.icon.list> Category
+                </x-menu.menu-link>
+            </x-menu.menu-item>
+            <x-menu.menu-item :active="request()->routeIs('admin.product.index')">
+                <x-menu.menu-link href="{{ route('admin.product.index') }}">
+                    <x-element.icon.product></x-element.icon.product> Product
                 </x-menu.menu-link>
             </x-menu.menu-item>
             <x-menu.menu-item :active="request()->routeIs('admin.user.index')">

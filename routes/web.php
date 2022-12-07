@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\DealerController;
+use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\UserController;
 use App\Providers\RouteServiceProvider;
@@ -36,4 +37,6 @@ Route::get('/admin/setting/edit', [SettingController::class, 'edit'])->name('adm
 Route::get('/admin/category', [CategoryController::class, 'index'])->name('admin.category.index');
 Route::get('/admin/category/create', [CategoryController::class, 'create'])->name('admin.category.create');
 Route::get('/admin/category/edit/{id}', [CategoryController::class, 'edit'])->name('admin.category.edit');
-
+Route::get('/admin/product', [ProductController::class, 'index'])->name('admin.product.index');
+Route::get('/admin/product/create', [ProductController::class, 'create'])->name('admin.product.create');
+Route::get('/admin/product/edit/{id}', [ProductController::class, 'edit'])->name('admin.product.edit');

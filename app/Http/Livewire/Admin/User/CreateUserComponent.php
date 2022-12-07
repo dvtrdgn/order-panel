@@ -49,8 +49,8 @@ class CreateUserComponent extends Component
         $this->validate();
         $this->password = FacadesHash::make($this->password);
         if ($this->image) {
-            $this->image_url = Carbon::now()->timestamp . '_user.' . $this->image->extension();
-            $this->image->storeAs('user',  $this->image_url);
+            $image_url = Carbon::now()->timestamp . '_user.' . $this->image->extension();
+            $this->image->storeAs('user',  $image_url);
         }
 
         $result =  User::create([
@@ -69,12 +69,13 @@ class CreateUserComponent extends Component
                 ['type' => 'success',  'message' => 'New user created successfully!']
             );
         }
-        $this->name = null;
-        $this->email = null;
-        $this->password = null;
-        $this->image = null;
-        $this->dealer_id = null;
-        $this->password_confirmation = null;
+        // $this->name = null;
+        // $this->email = null;
+        // $this->password = null;
+        // $this->image = null;
+        // $this->dealer_id = null;
+        // $this->password_confirmation = null;
+        $this->reset();
         $this->status = Status::Active->value;
         $this->role = Role::User->value;
     }

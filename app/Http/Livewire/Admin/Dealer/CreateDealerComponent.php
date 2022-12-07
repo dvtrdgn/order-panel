@@ -34,8 +34,8 @@ class CreateDealerComponent extends Component
     {
         $this->validate();
         if ($this->image) {
-            $this->image_url = Carbon::now()->timestamp . '_dealer.' . $this->image->extension();
-            $this->image->storeAs('dealer',  $this->image_url);
+            $image_url = Carbon::now()->timestamp . '_dealer.' . $this->image->extension();
+            $this->image->storeAs('dealer',  $image_url);
         }
 
         $result =  Dealer::create([
@@ -54,12 +54,8 @@ class CreateDealerComponent extends Component
                 ['type' => 'success',  'message' => 'New dealer created successfully!']
             );
         }
-        $this->name = null;
-        $this->email = null;
-        $this->image = null;
-        $this->phone = null;
-        $this->order = null;
-        $this->description = null;
+
+        $this->reset();
         $this->status = Status::Active->value;
     }
     public function mount()

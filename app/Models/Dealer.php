@@ -27,14 +27,30 @@ class Dealer extends Model
     {
         return $this->hasMany(User::class);
     }
-  
-    // public function orders()
-    // {
-    //     return $this->hasMany('App\Models\Order');
-    // }
+
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
+
+    public function productsOnCart(){
+        return $this->orders()
+        ->where('isCompleted', 0)
+        ->where('isDealerCompleteOrder', 0)
+        ->where('orderlist_id','=' , null);
+    }
+
+    public function checkWaitingOrder()
+    {
+        return $this->orders()
+        ->where('isCompleted', 0)
+        ->where('isDealerCompleteOrder', 1)
+        ->where('orderlist_id','!=' , null);
+    }
 
     public static function search($search)
     {
+
         return empty($search) ? static::query()
             :  static::query()->where('name', 'like', '%' . $search . '%');
     }

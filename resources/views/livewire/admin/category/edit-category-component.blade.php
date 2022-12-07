@@ -11,7 +11,7 @@
                                 <option value=0>Parent Category</option>
                                 @foreach ($allCategories as $category)
                                 <option value="{{ $category->id }}">
-                                    {{ $this->getParentsTree($category, $category->title) }}
+                                    {{\App\Models\Category::getParentsTree($category, $category->title) }}
                                 </option>
                                 @endforeach
                             </select>
