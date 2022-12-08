@@ -3,12 +3,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Responsive Bootstrap 4 Dashboard Template">
-    <meta name="author" content="ThemePixels">
+    <meta name="description" content="Order Panel">
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('admin') }}/assets/img/favicon.png">
     <title>{{ config('app.name', 'Order Panel') }}</title>
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
- 
+    @vite(['resources/css/app.css', 'resources/js/app.js']) 
     <link rel="stylesheet" href="{{ asset('admin') }}/assets/css/dashforge.dashboard.css">
  @livewireStyles
 </head>
