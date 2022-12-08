@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Order extends Model
 {
     use HasFactory;
+    const PAGINATION_COUNT = 10;
 
     public function user()
     {
@@ -32,12 +33,13 @@ class Order extends Model
         return $this->belongsTo(Product::class);
     }
 
-    public function totalCountForOneProduct($dealer_id){      
-         return  Order::where('product_id', $this->product_id)
-         ->where('isCompleted', 0)
-         ->where('dealer_id', $dealer_id)
-         ->where('orderlist_id','!=' , null)
-         ->where('isDealerCompleteOrder', 1)->get();
+    public function totalCountForOneProduct($dealer_id)
+    {
+        return  Order::where('product_id', $this->product_id)
+            ->where('isCompleted', 0)
+            ->where('dealer_id', $dealer_id)
+            ->where('orderlist_id', '!=', null)
+            ->where('isDealerCompleteOrder', 1)->get();
     }
 
     public function orderlist()

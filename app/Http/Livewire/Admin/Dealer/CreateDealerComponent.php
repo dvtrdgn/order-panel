@@ -19,7 +19,6 @@ class CreateDealerComponent extends Component
     public $phone;
     public $order;
 
-    // set validation rules
     protected $rules = [
         'name' => 'required|min:3',
         'email' => 'required|email',

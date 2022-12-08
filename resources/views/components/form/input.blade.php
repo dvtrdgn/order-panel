@@ -3,7 +3,8 @@
 ])
 @php
     $class = 'form-control text-sm 
-          block          
+          block  
+          w-full        
           px-3
           py-1.5
           text-base

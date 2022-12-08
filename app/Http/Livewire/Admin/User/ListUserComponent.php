@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Admin\User;
 
+use App\Models\Order;
 use App\Models\User;
 use App\Repository\User\UserRepo;
 use Illuminate\Support\Facades\Storage;
@@ -26,14 +27,13 @@ class ListUserComponent extends Component
     {
         $this->canDelete = 0;
         $this->deleteId = $id;
-        // $checkOrderBySelectedUser = Order::where('user_id', $this->deleteId)->orWhere('ordered_user_id', $this->deleteId)->first();
+        $checkOrderBySelectedUser = Order::where('user_id', $this->deleteId)->orWhere('ordered_user_id', $this->deleteId)->first();
 
-        // if ($checkOrderBySelectedUser) {
-        //     $this->canDelete =0;
-        // } else {
-        //     $this->canDelete =1;
-        // }
-        $this->canDelete = 1;
+        if ($checkOrderBySelectedUser) {
+            $this->canDelete =0;
+        } else {
+            $this->canDelete =1;
+        }       
     }
 
     public function delete()

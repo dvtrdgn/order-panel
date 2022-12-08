@@ -26,14 +26,11 @@ class EditUserComponent extends Component
             'user.status' => '',
             'user.role' => '',
             'user.dealer_id' => 'required',
-
         ];
     }
 
-    // customize validation message
     protected $messages = [
         'user.dealer_id' => 'Dealer is required',
-
     ];
 
     public function updated($propertyName)
@@ -51,7 +48,6 @@ class EditUserComponent extends Component
             }
             $imagePath = Carbon::now()->timestamp . '_user.' . $this->new_image->extension();
             $this->new_image->storeAs('user', $imagePath);
-
             $this->user->profile_photo_path = $imagePath;
         }
 
@@ -68,7 +64,6 @@ class EditUserComponent extends Component
             );
         }
     }
-
 
     public function mount($user_id)
     {

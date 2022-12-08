@@ -20,7 +20,6 @@ class ListProductComponent extends Component
     public $orderedProductIndex;
     public $check_product_order;
     public $check_product_order_count;
-    public $productCount;
     protected $paginationTheme = 'bootstrap';
 
     public function deleteId($id)
@@ -46,10 +45,6 @@ class ListProductComponent extends Component
         }
     }
 
-    public function mount()
-    {
-        $this->productCount = Product::count();
-    }
     public function render()
     {
         return view('livewire.admin.product.list-product-component', ['products' => Product::search($this->search)->orderBy('id', 'DESC')->Paginate(Product::PAGINATION_COUNT)]);

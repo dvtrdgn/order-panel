@@ -1,6 +1,6 @@
 <x-admin-layout>
     <x-breadcrumb.main>
-        <x-breadcrumb.left-item class="active" aria-current="page">DAshboard Home </x-breadcrumb.left-item>
+        <x-breadcrumb.left-item class="active" aria-current="page">Dashboard Home </x-breadcrumb.left-item>
         <x-slot name="title"> Welcome @auth
             {{Auth::user()->name}}
         @endauth </x-slot>

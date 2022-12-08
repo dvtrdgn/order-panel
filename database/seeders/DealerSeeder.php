@@ -18,27 +18,27 @@ class DealerSeeder extends Seeder
         Dealer::insert(
             [
                 [
-                    'name' => 'dealer 1',
+                    'name' => 'A dealer 1',
                     'phone' => '06876 01 791',
 
                 ],
                 [
-                    'name' => 'dealer 2',
+                    'name' => 'B dealer 2',
                     'phone' => '06876 01 791',
 
                 ],
                 [
-                    'name' => 'dealer 3',
+                    'name' => 'C dealer 3',
                     'phone' => '06876 01 791',
 
                 ],
                 [
-                    'name' => 'dealer 4',
+                    'name' => 'D dealer 4',
                     'phone' => '06876 01 791',
 
                 ],
                 [
-                    'name' => 'dealer 5',
+                    'name' => 'E dealer 5',
                     'phone' => '06876 01 791',
 
                 ],

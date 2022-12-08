@@ -25,6 +25,9 @@ class UserSeeder extends Seeder
                     'created_at' => now(),
                     'password' => '$2y$10$0Z28kIbCWOP5pEYoUvjh5eVRGjJ6xUVCjbdJruud1ahYUx6./g1Ge', // password
                     'remember_token' => Str::random(3),
+                    'dealer_id'=>1,
+                    'role'=>'admin',
+                    
                   
                 ],
                 

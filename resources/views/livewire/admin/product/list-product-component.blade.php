@@ -1,14 +1,13 @@
 <div class="row col-md-12">
     <div class="col-xl-12">
         <div class="col-xl-12">
-            <div data-label="Products : {{ $productCount }}" class="df-example" style="padding: 25px 0px 25px 0px">
+            <fieldset class="form-fieldset mg-10 shadow-md hover:shadow-xl col-md-12">
+                <legend>Shown Product : {{ $products->count() }}</legend>
                 <div class="card-header">
                     <div class="input-group">
                         <div class="input-group ">
                             <x-form.input wire:change="$emitSelf('updatingSearch')" type="text" class="form-control"
                                 placeholder="Search for..." wire:model="search"></x-form.input>
-
-                            </span>
                         </div>
                     </div>
                 </div>
@@ -34,7 +33,7 @@
                                             @endif
                                         </td>
                                         <td>
-                                            <title class="d-inline-block align-middle mb-0 ml-1 font-bold">
+                                            <title class="block align-middle mb-0 ml-1 font-bold">
                                                 {{ $product->title }} </title>
                                             @if ($product->quantity)
                                                 <title
@@ -72,7 +71,7 @@
                         </table>
                     </div>
                 </div>
-            </div>
+            </fieldset>
             <div style="float: right" class="mt-3">
                 {{ $products->links() }}
             </div>

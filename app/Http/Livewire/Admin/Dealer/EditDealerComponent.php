@@ -26,7 +26,6 @@ class EditDealerComponent extends Component
             'dealer.description' => '',
             'dealer.phone' => '',
             'dealer.order' => '',
-
         ];
     }
 
@@ -45,7 +44,6 @@ class EditDealerComponent extends Component
             }
             $imagePath = Carbon::now()->timestamp . '_dealer.' . $this->new_image->extension();
             $this->new_image->storeAs('dealer', $imagePath);
-
             $this->dealer->image = $imagePath;
         }
 
@@ -68,7 +66,6 @@ class EditDealerComponent extends Component
         $this->dealer_id = $dealer_id;
         $this->dealer = Dealer::find($this->dealer_id);
     }
-
 
     public function render()
     {

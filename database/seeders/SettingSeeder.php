@@ -20,7 +20,7 @@ class SettingSeeder extends Seeder
                 [
                     'name' => 'Order ',
                     'title' => 'Order ',
-                    'phone1' => '',
+                    'phone1' => '06 876 01 01',
                     'email1' => 'info@sitename.nl',
                     'email2' => 'info@sitename.nl',
                     'site_url' => 'www.sitename.nl',
@@ -28,7 +28,6 @@ class SettingSeeder extends Seeder
                     'copy' => 'copy',
                 ]
             ],
-
         );
     }
 }

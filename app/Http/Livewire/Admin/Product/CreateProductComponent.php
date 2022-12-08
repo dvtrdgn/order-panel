@@ -71,7 +71,7 @@ class CreateProductComponent extends Component
             $product->save();
             $this->dispatchBrowserEvent(
                 'alert',
-                ['type' => 'success',  'message' => 'User updated successfully!']
+                ['type' => 'success',  'message' => 'New product created successfully!']
             );
         }
 

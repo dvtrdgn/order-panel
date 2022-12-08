@@ -38,7 +38,7 @@ class ListCategoryComponent extends Component
         $this->get_related_category_with_parent_category = Category::where('parent_id', $id)->get();
         $find_category = Category::find($id);
         $this->categoryHasProduct = 1;
-        // $this->categoryHasProduct =  $find_category->products->count();
+        $this->categoryHasProduct =  $find_category->products->count();
 
         if ($get_related_category_with_parent_category_count > 0) {
             $this->categoryHasSubCategory = 1;
@@ -52,8 +52,7 @@ class ListCategoryComponent extends Component
     }
 
     public function delete()
-    {
-       
+    {       
         $get_data = Category::find($this->deleteId);
         $imagePath = "/category/" . $get_data->image;
         if (Storage::exists($imagePath)) {
@@ -61,8 +60,10 @@ class ListCategoryComponent extends Component
         }
         $result =   Category::destroy($this->deleteId);
         if ($result) {
-            $this->emit('data_updated');
-            $this->emit('alert', ['type' => 'success', 'message' => __('success')]);
+            $this->dispatchBrowserEvent(
+                'alert',
+                ['type' => 'success',  'message' => 'Category deleted!']
+            );
         }
     }
 
