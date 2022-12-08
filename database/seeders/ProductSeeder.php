@@ -53,8 +53,8 @@ class ProductSeeder extends Seeder
                     'category_id' => 4,
                     'barcode' => 'borcode 2',
                     'size' => '125*125',
-                    'quantity' => 100,
-                    'alert_min_count' => 25,
+                    'quantity' => 250,
+                    'alert_min_count' => 27,
                     'image' => '1670509499_product.jpg',                    
                 ],
                 [
@@ -63,8 +63,8 @@ class ProductSeeder extends Seeder
                     'category_id' => 1,
                     'barcode' => 'borcode 5',
                     'size' => '125*125',
-                    'quantity' => 100,
-                    'alert_min_count' => 25,
+                    'quantity' => 68,
+                    'alert_min_count' => 250,
                     'image' => '1670486806_product.jpg',                    
                 ],
                 [
@@ -73,8 +73,8 @@ class ProductSeeder extends Seeder
                     'category_id' => 4,
                     'barcode' => 'borcode 6',
                     'size' => '125*125',
-                    'quantity' => 100,
-                    'alert_min_count' => 25,
+                    'quantity' => 175,
+                    'alert_min_count' => 250,
                     'image' => '1670509499_product.jpg',                    
                 ],
                 

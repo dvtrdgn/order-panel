@@ -76,4 +76,107 @@
             </div>
         </div>
     </div>
+    <div class="col-lg-12 col-xl-12 d-sm-none d-md-block d-none d-sm-block" style="margin-top: 10px">
+        <div class="card card-shadow">
+            <div class="card-body ">
+                <div class="row align-items-sm-end">
+                    <div class="col-lg-12 col-xl-12">
+                        <canvas id="allProductChart" height="380" width="600">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12 col-lg-12 mg-t-10">
+        <div class="card card-shadow">
+            @if ($allProductWithAlertStock->count() > 0)
+                <div class="card-header pd-b-0 bd-b-0 pd-t-20 pd-lg-t-25 pd-l-20 pd-lg-l-25">
+                    <h6 class="mg-b-5">Product Stock Status </h6>
+                    <p class="tx-12 tx-color-03 mg-b-0">You should check the stock status of some products. Stock
+                        quantities are less than the minimum quantity <a href="{{ route('admin.product.index') }}">
+                            <b>Check
+                                all product</b> </a></p>
+                </div><!-- card-header -->
+                <div class="card-body pd-sm-20 pd-lg-25">
+                    <div class="table-responsive">
+                        <table class="table table-dashboard mg-b-0">
+                            <thead>
+                                <tr>
+                                    <th class="tx-normal">Product</th>
+                                    <th class="text-right">Stock Quantity</th>
+                                    <th class="text-right">Quantity for alert</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($allProductWithAlertStock as $product)
+                                    <tr>
+                                        <td class="tx-medium tx-normal">
+                                            <a href="{{ route('admin.product.edit', ['id' => $product->id]) }}">
+                                                {{ $product->title }} <x-element.icon.arrow-circle>
+                                                </x-element.icon.arrow-circle> </a>
+
+                                        </td>
+                                        <td class="tx-medium text-right tx-secondary">{{ $product->quantity }}
+                                        </td>
+                                        <td class="tx-medium text-right">{{ $product->alert_min_count }} <span
+                                                class="mg-l-5 tx-10 tx-normal tx-danger"><i
+                                                    class="icon ion-md-arrow-down"></i>
+                                                {{ $product->alert_min_count - $product->quantity }} </span></td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            @else
+                <div class="card-header pd-b-0 bd-b-0 pd-t-20 pd-lg-t-25 pd-l-20 pd-lg-l-25">
+                    <h6 class="mg-b-5">Product Stock Status </h6>
+                    <p class="tx-12 tx-color-03 mg-b-0">That's perfect, All products are in sufficient stock <a
+                            href="{{ route('admin.product.index') }}">Check all product</a></p>
+                    <br><br>
+                </div>
+            @endif
+        </div>
+    </div>
+
+
+    @push('scripts')
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    @endpush
+
+
+    <script>
+        document.addEventListener('livewire:load', function() {
+
+            const labels = @this.AllProductName;
+            const backgroundColor = [];
+            const borderColor = [];
+            for (let i = 0; i < labels.length; i++) {
+                const r = Math.floor(Math.random() * 255);
+                const g = Math.floor(Math.random() * 255);
+                const b = Math.floor(Math.random() * 255);
+                backgroundColor.push('rgba(' + r + ',' + g + ', ' + b + ', 0.2 )');
+                borderColor.push('rgba(' + r + ',' + g + ', ' + b + ', 1 )');
+            }
+            const ctx11 = document.getElementById('allProductChart').getContext('2d');
+            const myChart111 = new Chart(ctx11, {
+                type: 'bar',
+                data: {
+                    labels: @this.AllProductName,
+                    datasets: [{
+                        label: 'All products with quantity less than 500',
+                        data: @this.AllProductQuantity,
+                        backgroundColor: backgroundColor,
+                        borderColor: borderColor,
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+
+                }
+            });
+        })
+    </script>
 </div>

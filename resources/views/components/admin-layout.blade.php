@@ -24,6 +24,7 @@
     <script src="{{ asset('admin') }}/lib/bootstrap/js/bootstrap.bundle.min.js"></script> 
     <script src="{{ asset('admin') }}/lib/perfect-scrollbar/perfect-scrollbar.min.js"></script>
     <script src="{{ asset('admin') }}/assets/js/dashforge.js"></script>
+    @stack('scripts')
     @livewireScripts
     <script>
         window.addEventListener('alert', event => {
