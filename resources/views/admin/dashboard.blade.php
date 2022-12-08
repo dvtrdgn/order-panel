@@ -8,5 +8,5 @@
             <x-breadcrumb.right-item href="{{ route('admin.setting.edit') }}"><x-element.icon.setting></x-element.icon.setting> Setting</x-breadcrumb.right-item>
         </x-slot>
     </x-breadcrumb.main>
-    <h1>content area</h1>
+    @livewire('admin.dashboard-component')
 </x-admin-layout>

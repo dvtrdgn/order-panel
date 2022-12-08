@@ -19,21 +19,22 @@ Route::get('/', function () {
 
 Route::middleware([
     'auth:sanctum',  config('jetstream.auth_session'),  'verified'
-])->prefix('admin')->group(function () {
-    Route::get('dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
-    Route::get('/users', [UserController::class, 'index'])->name('admin.user.index');
-    Route::get('/user/create', [UserController::class, 'create'])->name('admin.user.create');
-    Route::get('/user/edit/{id}', [UserController::class, 'edit'])->name('admin.user.edit');
-    Route::get('/dealers', [DealerController::class, 'index'])->name('admin.dealer.index');
-    Route::get('/dealer/create', [DealerController::class, 'create'])->name('admin.dealer.create');
-    Route::get('/dealer/edit/{id}', [DealerController::class, 'edit'])->name('admin.dealer.edit');
-    Route::get('/setting/edit', [SettingController::class, 'edit'])->name('admin.setting.edit');
-    Route::get('/category', [CategoryController::class, 'index'])->name('admin.category.index');
-    Route::get('/category/create', [CategoryController::class, 'create'])->name('admin.category.create');
-    Route::get('/category/edit/{id}', [CategoryController::class, 'edit'])->name('admin.category.edit');
-    Route::get('/product', [ProductController::class, 'index'])->name('admin.product.index');
-    Route::get('/product/create', [ProductController::class, 'create'])->name('admin.product.create');
-    Route::get('/product/edit/{id}', [ProductController::class, 'edit'])->name('admin.product.edit');
-    Route::get('/waiting-order', [OrderController::class, 'waitingOrder'])->name('admin.order.waiting');
-    Route::get('/completed-order', [OrderController::class, 'completedOrder'])->name('admin.order.completed');
+])->prefix('admin')->name('admin.')->group(function () {
+    Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/users', [UserController::class, 'index'])->name('user.index');
+    Route::get('/user/create', [UserController::class, 'create'])->name('user.create');
+    Route::get('/user/edit/{id}', [UserController::class, 'edit'])->name('user.edit');
+    Route::get('/dealers', [DealerController::class, 'index'])->name('dealer.index');
+    Route::get('/dealer/create', [DealerController::class, 'create'])->name('dealer.create');
+    Route::get('/dealer/edit/{id}', [DealerController::class, 'edit'])->name('dealer.edit');
+    Route::get('/dealer/order-list/{id}', [DealerController::class, 'dealerOrderList'])->name('dealer.order-list');
+    Route::get('/setting/edit', [SettingController::class, 'edit'])->name('setting.edit');
+    Route::get('/category', [CategoryController::class, 'index'])->name('category.index');
+    Route::get('/category/create', [CategoryController::class, 'create'])->name('category.create');
+    Route::get('/category/edit/{id}', [CategoryController::class, 'edit'])->name('category.edit');
+    Route::get('/product', [ProductController::class, 'index'])->name('product.index');
+    Route::get('/product/create', [ProductController::class, 'create'])->name('product.create');
+    Route::get('/product/edit/{id}', [ProductController::class, 'edit'])->name('product.edit');
+    Route::get('/waiting-order', [OrderController::class, 'waitingOrder'])->name('order.waiting');
+    Route::get('/completed-order', [OrderController::class, 'completedOrder'])->name('order.completed');
 });

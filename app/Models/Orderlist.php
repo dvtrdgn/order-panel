@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Orderlist extends Model
 {
     use HasFactory;
+    const PAGINATION_COUNT = 10;
 
     public function orders()
     {

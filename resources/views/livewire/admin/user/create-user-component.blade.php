@@ -56,8 +56,6 @@
                 </x-form.radio-button>
             </div>
             <div class="col-md-2 my-10">
-
-
                 <div class="row" x-data="{isUploading:false, progress:5}" x-on:livewire-upload-start="isUploading=true" x-on:livewire-upload-finish="isUploading=false, progress=5" x-on:livewire-upload-error="isUploading=false" x-on:livewire-upload-progress="progress=$event.detail.progress">
                     <div class="col-12">
                         <div class="form-group">

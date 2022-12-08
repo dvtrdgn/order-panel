@@ -22,5 +22,9 @@ class DealerController extends Controller
     {
         return view('admin.dealer.edit-dealer', ['dealer_id'=>$id]);
     }
+    public function dealerOrderList($id)
+    {
+        return view('admin.dealer.order-list', ['dealer_id'=>$id]);
+    }
 
 }
