@@ -33,6 +33,16 @@ class EditCategoryComponent extends Component
         $this->validateOnly($propertyName);
     }
 
+    public function getParentsTree($category, $title)
+    {
+        if ($category->parent_id == 0) {
+            return $title;
+        }
+        $parent = Category::find($category->parent_id);
+        $title = $parent->title . ' > ' . $title;
+        return   $this->getParentsTree($parent, $title);
+    }
+
     public function mount($edited_category_id)
     {
         $this->edited_category_id = $edited_category_id;
@@ -47,7 +57,6 @@ class EditCategoryComponent extends Component
         $this->image = $get_category->image;
         $this->allCategories  = Category::with('children')->orderBy('parent_id', 'ASC')->get();
     }
-
 
     public function save()
     {

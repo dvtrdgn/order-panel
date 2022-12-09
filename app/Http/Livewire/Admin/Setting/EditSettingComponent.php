@@ -54,8 +54,7 @@ class EditSettingComponent extends Component
     {
         $validatedData = $this->validate();
     }
-
-    // save setting form
+    
     public function save()
     {
         $this->validate();
