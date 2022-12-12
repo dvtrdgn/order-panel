@@ -20,17 +20,8 @@ class ListCategoryComponent extends Component
     public $categoryHasSubCategory;
     public $categoryHasProduct;
     public $get_related_category_with_parent_category;
-    public $deleteId = '';
+    public $deleteId = null;
 
-    public function getParentsTree($category, $title)
-    {
-        if ($category->parent_id == 0) {
-            return $title;
-        }
-        $parent = Category::find($category->parent_id);
-        $title = $parent->title . ' > ' . $title;
-        return   $this->getParentsTree($parent, $title);
-    }
 
     public function deleteId($id)
     {

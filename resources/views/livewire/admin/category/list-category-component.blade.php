@@ -21,7 +21,7 @@
                         <tbody>
                             @foreach ($categories as $category)
                             <tr>
-                                <td>{{ $this->getParentsTree($category, $category->title) }}</td>
+                                <td>{{ \App\Models\Category::getParentsTree($category, $category->title) }}</td>
                                 <td>
                                     @if (!$category->image == null)
                                     <img src="{{ asset('assets/images/category') }}/{{ $category->image }}" alt="img" class="h-12  mb-3"> 

@@ -22,6 +22,13 @@ Notice: This panel allows you to edit ordered products. The product order sectio
 
 
 
+## Requirements
+
+- Laravel 9.42.2
+- PHP >= 8.1
+
+
+
 ## Screenshots
 
 ![App Screenshot](http://www.incele.web.tr/wp-content/uploads/demo-order-panel.png)
